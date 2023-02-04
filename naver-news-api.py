@@ -23,7 +23,7 @@ query = input('검색할 단어를 입력하세요: ')
 async def search(query):
     async with ClientSession(headers={
         'X-Naver-Client-Id': CLIENT['CLIENT_ID'],
-        'X-Naver-Client-Secret': CLIENT['CLIENT_SECRET']
+        'X-Naver-Client-Secret': CLIENT['CLIENT_SECRET'],
     }) as session:
         response = await session.get('https://openapi.naver.com/v1/search/news.json', params={'query': query})
         response.raise_for_status()
