@@ -33,9 +33,6 @@ titles = map(Tag.getText, titles)
 categories = map(Tag.getText, categories)
 sources = map(Tag.getText, sources)
 
-titles = tuple(titles)
-categories = tuple(categories)
-
 result = [
     {
         'title': title,
