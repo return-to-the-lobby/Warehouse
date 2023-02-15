@@ -8,7 +8,7 @@ from selenium.common.exceptions import ElementNotInteractableException
 from bs4 import BeautifulSoup, Tag
 
 URL = sys.intern('https://www.naver.com')
-EXECUTABLE = sys.intern('chromedriver.exe')
+EXECUTABLE = sys.intern('chromedriver.exe') # sys.intern을 사용하면 메모리를 아낄 수 있습니다.
 
 chrome = Chrome(EXECUTABLE)
 chrome.get(URL)
@@ -27,7 +27,7 @@ categories = soup.find_all('em', attrs={'class': 'theme_category'})
 categories = filter(lambda element: element.parent.attrs['class'][0] != 'info_box', categories)
 categories = list(categories)
 titles = [category.parent.find('strong') for category in categories]
-sources = [category.parent.find('div').find('span').find('span') for category in categories]
+sources = [category.parent.find('div').find('span').find('span') for category in categories] # category.parent는 카테고리의 부모 클래스인데 그 부모 클래스에 소스, 제목도 다 들어있어서 그냥 거기서 찾음
 
 titles = map(Tag.getText, titles)
 categories = map(Tag.getText, categories)
